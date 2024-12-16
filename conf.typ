@@ -1,12 +1,18 @@
+#import "toc.typ": toc
+
 #let conf(
   title: none,
+  subtitle: none,
+  department: none,
+  supervisors: none,
   author: (),
   abstract: [],
   hand_in_date: none,
+  chapters: (),
   doc,
 ) = {
   set page(paper: "a4")
-  set page(numbering: "i")
+
 
   show heading.where(level: 1): it => [
     #set align(right)
@@ -16,32 +22,25 @@
   ]
 
 
-  // <Cover page>
+  // Cover
   place(
     left + top,
     image("./images/unibas.svg", width: 140pt),
   )
-
-
   [
     #set align(center)
     #align(horizon)[
       #text(size: 26pt, font: "Nimbus Sans", [*#title*])
     ]
 
-    Scientific Writing Seminar Final Paper
-
+    #subtitle
     #v(80pt)
 
 
-    Natural Science Faculty of the University of Basel \
-    Department of Mathematics and Computer Sciences
-
+    #department
     #v(30pt)
 
-    Examiner: Prof. Dr. Craig Hamilton \
-    Supervisor: Dr. Tanja Schindler
-
+    #supervisors
     #v(30pt)
 
     #author.name \
@@ -54,65 +53,29 @@
   ]
 
   pagebreak()
-  // </Cover Page>
 
 
-  // <Abstract>
-
+  // Abstract
+  set page(numbering: "i")
+  v(15%)
   [= Abstract <outside>]
+  v(3em)
   abstract
   pagebreak()
-  // </Abstract>
 
-
-  // <Table of Contents>
-  context {
-    let outsides = query(<outside>)
-
-
-    let fill = box(width: 1fr, repeat[.])
-    let tab = "\t"
-    show outline.entry: it => {
-      let ignore = it.element in outsides
-      if it.level == 1 {
-        v(10pt)
-      }
-
-      set text(size: 14pt) if it.level == 1
-
-      let page = it.page
-      if it.body.has("children") {
-        let maybe_heading_i = if ignore [#h(0.5em) #tab] else [#it.body.children.at(0)]
-
-        if it.level == 1 [* #maybe_heading_i #h(0.5em) #tab #it.body.children.at(2) #h(1fr) #page*] else [#maybe_heading_i #h(0.5em) #tab #it.body.children.at(2) #fill #page]
-      } else [*#h(1.5em) #it.body #h(1fr) #it.page*]
-    }
-    outline(title: "Table of Contents", indent: n => [#h(1.5em) #tab #tab #tab])
-  }
-  // </Table of Contents>
-
-
-  set page(header: context [
-    #box(
-      stroke: (
-        bottom: black,
-      ),
-      inset: (
-        bottom: 6pt,
-      ),
-    )[
-      #title
-      #h(1fr)
-      #counter(page).display()
-    ]
-  ])
+  // Table of Contents
+  toc()
+  pagebreak()
 
 
   set par(justify: true)
   set heading(numbering: "1.1")
-  set page(numbering: "1")
+  set page(numbering: none)
   counter(page).update(1)
 
+  for (i, chapter) in chapters.enumerate() {
+    include (chapter)
+  }
 
   doc
 }
