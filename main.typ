@@ -1,6 +1,6 @@
-#import "conf.typ": conf
+#import "template.typ": template;
 
-#show: conf.with(
+#show: template.with(
   title: "Sandbox Implementation for an Enterprise SuperApp",
   subtitle: "Scientific Writing Seminar Final Paper",
   department: [Natural Science Faculty of the University of Basel \

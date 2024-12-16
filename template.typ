@@ -1,6 +1,6 @@
 #import "toc.typ": toc
 
-#let conf(
+#let template(
   title: none,
   subtitle: none,
   department: none,
