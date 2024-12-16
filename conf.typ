@@ -6,6 +6,7 @@
   doc,
 ) = {
   set page(paper: "a4")
+  set page(numbering: "i")
 
   show heading.where(level: 1): it => [
     #set align(right)
@@ -58,59 +59,36 @@
 
   // <Abstract>
 
-  heading(outlined: false)[Abstract]
+  [= Abstract <outside>]
   abstract
   pagebreak()
   // </Abstract>
 
 
   // <Table of Contents>
-
-  // heading[
-  //   Table of Contents
-  // ]
-
-  // context {
-  //   let chapters = query(
-  //     heading.where(
-  //       // level: 1,
-  //       outlined: true,
-  //     ),
-  //   )
-
-  //   for (i, chapter) in chapters.enumerate() {
-  //     let loc = chapter.location()
-  //     let p = loc.page-numbering()
+  context {
+    let outsides = query(<outside>)
 
 
-  //     let fill = box(width: 1fr, repeat[.])
-  //     if not p == none {
-  //       let nr = numbering(
-  //         p,
-  //         ..counter(page).at(loc),
-  //       )
-  //       // [#chapter.body #h(1fr) #nr \ ]
-  //       // [#chapter. #chapter.body #fill #nr \ ]
-  //       [[ #chapter.fields() ] #chapter.body #fill #nr \ ]
-  //       // type(chapter)
-  //     }
-  //   }
-  // }
-  //
+    let fill = box(width: 1fr, repeat[.])
+    let tab = "\t"
+    show outline.entry: it => {
+      let ignore = it.element in outsides
+      if it.level == 1 {
+        v(10pt)
+      }
 
+      set text(size: 14pt) if it.level == 1
 
-  let fill = box(width: 1fr, repeat[.])
-  let tab = "\t"
-  show outline.entry: it => {
-    if it.level == 1 {
-      v(10pt)
-      text(size: 14pt)[*#it.body.children.at(0) #h(0.5em) #tab #it.body.children.at(2) #h(1fr) #it.page*]
-    } else {
-      text(size: 12pt)[#it.body.children.at(0) #h(0.5em) #tab #it.body.children.at(2) #fill #it.page]
+      let page = it.page
+      if it.body.has("children") {
+        let maybe_heading_i = if ignore [#h(0.5em) #tab] else [#it.body.children.at(0)]
+
+        if it.level == 1 [* #maybe_heading_i #h(0.5em) #tab #it.body.children.at(2) #h(1fr) #page*] else [#maybe_heading_i #h(0.5em) #tab #it.body.children.at(2) #fill #page]
+      } else [*#h(1.5em) #it.body #h(1fr) #it.page*]
     }
+    outline(title: "Table of Contents", indent: n => [#h(1.5em) #tab #tab #tab])
   }
-  outline(title: "Table of Contents", indent: n => [#h(1.5em) #tab #tab #tab])
-
   // </Table of Contents>
 
 
@@ -129,12 +107,12 @@
     ]
   ])
 
-  // counter(page).update(1)
-  // set page(numbering: "1")
+
   set par(justify: true)
-
-
   set heading(numbering: "1.1")
+  set page(numbering: "1")
+  counter(page).update(1)
+
 
   doc
 }

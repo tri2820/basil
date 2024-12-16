@@ -15,24 +15,22 @@
 #lorem(90)
 
 == Motivation
-#lorem(100)
-
-= Background
-#lorem(100)
-== History
-#lorem(100)
-== State of the Art
-#lorem(100)
-= Analysis
-#lorem(100)
-== Setup
-#lorem(100)
-
-
-
-// #counter(page).update(0)
-#heading(outlined: false)[Bibliography]
 #lorem(200)
 
-#heading(outlined: false)[Bibliography]
+= Background
+#lorem(200)
+== History
+#lorem(200)
+== State of the Art
+#lorem(200)
+= Analysis
+#lorem(200)
+== Setup
+#lorem(200)
+
+
+= Bibliography <outside>
+#lorem(200)
+
+= Appendix <outside>
 #lorem(100)
