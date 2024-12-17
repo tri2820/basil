@@ -1,6 +1,8 @@
 #import "../chapter.typ": chapter;
 
-#show: chapter.with(title: "Experiments")
+#show: chapter
+
+= Experiments
 
 #lorem(200)
 

@@ -1,8 +1,17 @@
 #import "../chapter.typ": chapter;
 
-#show: chapter.with(title: "Introduction")
+#show: chapter
 
-#lorem(200)
+= Introduction
+
+#lorem(50)
+
+#lorem(50)
+
+#lorem(50)
 
 == #lorem(4)
-#lorem(500)
+
+#lorem(100)
+
+#lorem(50)

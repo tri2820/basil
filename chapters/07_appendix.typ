@@ -1,6 +1,8 @@
 #import "../chapter.typ": chapter;
 
-#show: chapter.with(title: "Appendix", outside: true)
+#show: chapter.with(alphabet_header: true)
+
+= Appendix <outside>
 
 #lorem(200)
 

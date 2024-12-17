@@ -1,6 +1,8 @@
 #import "../chapter.typ": chapter;
 
-#show: chapter.with(title: "Sandbox Implementation")
+#show: chapter
+
+= Sandbox Implementation
 
 #lorem(200)
 

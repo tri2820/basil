@@ -1,6 +1,10 @@
 #import "../chapter.typ": chapter;
 
-#show: chapter.with(title: "Enterprise SuperApp")
+#show: chapter
+
+= Enterprise SuperApp
+
+#lorem(200)
 
 #lorem(200)
 

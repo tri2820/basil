@@ -1,14 +1,24 @@
+#let current_heading() = {
+  let headings_selector = selector(heading.where(level: 1))
+  let headings = query(headings_selector)
+  let heading = headings.rev().find(h => h.location().page() <= here().page())
+  heading
+}
+
 #let chapter(
-  title: none,
-  outside: false,
+  alphabet_header: false,
   doc,
 ) = {
+  let title = "OK"
+
+
   set page(
     header: context {
-      // here()
-      let headings = query(selector(heading.where(level: 1)).after(here()))
-      if headings.len() > 0 {
-        let heading = headings.first()
+      let heading = current_heading()
+      if heading == none {
+        // no-op
+      } else {
+        let title = heading.body.text
         let h_loc = heading.location().page()
         if (h_loc == here().page()) {
           // no-op
@@ -31,24 +41,27 @@
   )
 
 
-  v(15%)
+  v(110pt)
 
   let chapter_i = counter("chapter")
   chapter_i.step()
-  align(right)[
-    #block()[
-      #text(size: 120pt, font: "Nimbus Sans", weight: "bold", fill: rgb("#b3b3b3"))[
-        #context chapter_i.display("1")
+  context {
+    let heading = current_heading()
+    let first_letter = heading.body.text.at(0)
+    let chapter_num = chapter_i.display("1")
+
+    align(right)[
+      #block[
+        #text(size: 120pt, font: "Nimbus Sans", weight: "bold", fill: rgb("#b3b3b3"))[
+          #if alphabet_header [#first_letter] else [#chapter_num]
+        ]
       ]
     ]
-  ]
+  }
 
-  [
-    #heading[#title]
-    #if outside { label("outside") } else [#none]
-  ]
-
-  v(3em)
 
   doc
+
+
+  v(3em)
 }

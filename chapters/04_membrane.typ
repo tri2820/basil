@@ -1,6 +1,8 @@
 #import "../chapter.typ": chapter;
 
-#show: chapter.with(title: "Membrane")
+#show: chapter
+
+= Membrane
 
 #lorem(200)
 

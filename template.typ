@@ -16,9 +16,18 @@
 
   show heading.where(level: 1): it => [
     #set align(right)
-    #set text(13pt, weight: "regular")
     #set text(size: 20pt, font: "Nimbus Sans")
-    *#it.body*
+    #block(below: 3em)[
+      *#it.body*
+    ]
+  ]
+
+
+  show heading.where(level: 2): it => [
+    #set text(size: 14pt, font: "Nimbus Sans")
+    #block(below: 1em, above: 3em)[
+      *#it*
+    ]
   ]
 
 
@@ -68,8 +77,10 @@
   pagebreak()
 
 
-  set par(justify: true)
+  set par(justify: true, leading: 0.85em, spacing: 2em)
   set heading(numbering: "1.1")
+
+
   set page(numbering: none)
   counter(page).update(1)
 
