@@ -10,7 +10,7 @@
     Examiner: Prof. Dr. Craig Hamilton \
     Supervisor: Dr. Tanja Schindler
   ],
-  abstract: lorem(40),
+  abstract: "chapters/abstract.typ",
   author: (
     name: "Tri Nguyen",
     matriculation_number: "24-065-948",

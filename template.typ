@@ -6,7 +6,7 @@
   department: none,
   supervisors: none,
   author: (),
-  abstract: [],
+  abstract: none,
   hand_in_date: none,
   chapters: (),
   doc,
@@ -67,8 +67,7 @@
   // Abstract
   set page(numbering: "i")
   v(110pt)
-  [= Abstract <outline-ignore-number>]
-  abstract
+  include (abstract)
   pagebreak()
 
   // Table of Contents
