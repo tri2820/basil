@@ -2,9 +2,6 @@
 
 #show: chapter
 
-= Sandbox Implementation
+= Implementation
 
-#lorem(200)
-
-== #lorem(4)
 #lorem(500)

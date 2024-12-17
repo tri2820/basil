@@ -1,7 +1,7 @@
 #import "template.typ": template;
 
 #show: template.with(
-  title: "Sandbox Implementation for an Enterprise SuperApp",
+  title: "Sandbox Implementation for Enterprise Superapps: A Scalable and Secure Approach",
   subtitle: "Scientific Writing Seminar Final Paper",
   department: [Natural Science Faculty of the University of Basel \
     Department of Mathematics and Computer Sciences
@@ -10,7 +10,7 @@
     Examiner: Prof. Dr. Craig Hamilton \
     Supervisor: Dr. Tanja Schindler
   ],
-  abstract: "chapters/abstract.typ",
+  abstract: "chapters/00_abstract.typ",
   author: (
     name: "Tri Nguyen",
     matriculation_number: "24-065-948",
@@ -19,11 +19,11 @@
   hand_in_date: "20th December 2024",
   chapters: (
     "chapters/01_introduction.typ",
-    "chapters/02_enterprise_superapp.typ",
-    "chapters/03_sandbox_implementation.typ",
-    "chapters/04_membrane.typ",
-    "chapters/05_experiments.typ",
-    "chapters/06_bibliography.typ",
-    "chapters/07_appendix.typ",
+    "chapters/02_related_works.typ",
+    "chapters/03_methodology.typ",
+    "chapters/04_implementation.typ",
+    "chapters/05_evaluation.typ",
+    "chapters/06_discussion.typ",
+    "chapters/07_bibliography.typ",
   ),
 )

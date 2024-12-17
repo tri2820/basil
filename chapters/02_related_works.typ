@@ -2,9 +2,6 @@
 
 #show: chapter
 
-= Experiments
+= Related Works
 
 #lorem(200)
-
-== #lorem(4)
-#lorem(500)

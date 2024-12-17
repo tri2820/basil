@@ -18,3 +18,6 @@ $(OUTPUT_PDF): $(MAIN_PDF) $(DOC_PDF)
 # Clean up intermediate files
 clean:
 	rm -f $(MAIN_PDF) $(OUTPUT_PDF)
+
+count: 
+	pdftotext main.pdf - | wc -w
