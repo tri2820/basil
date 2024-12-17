@@ -2,21 +2,16 @@
   v(110pt)
 
   context {
-    let outline-ignore-numbers = query(<outline-ignore-number>)
+    let dots = box(width: 1fr, repeat[.])
 
-    let fill = box(width: 1fr, repeat[.])
-    let tab = "\t"
     let last_level = state("last_level", 0)
     show outline.entry: it => context {
       last_level.update(_ => it.level)
-
-      let ignore = it.element in outline-ignore-numbers
-
-      // if it.level == 1 and not ignore { v(50pt) }
+      let ignore = it.element.fields().at("label", default: none) == <outline-ignore-number>
       set text(size: 14pt, weight: "bold") if it.level == 1
       let heading_i_or_ignored = if ignore [] else [#it.body.children.at(0)]
       let content = if ignore and not it.body.has("children") [#it.body] else [#it.body.children.at(2)]
-      let filler = if ignore [#h(1fr)] else [#fill]
+      let filler = if it.level == 1 [#h(1fr)] else [#dots]
       let above = if it.level == 1 and last_level.get() >= 1 [ #v(1em) ]
       [#above #heading_i_or_ignored #content #filler #it.page]
     }

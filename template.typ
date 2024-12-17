@@ -75,7 +75,6 @@
   toc()
   pagebreak()
 
-
   set par(justify: true, leading: 0.85em, spacing: 2em)
   set heading(numbering: "1.1")
 
