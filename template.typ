@@ -17,7 +17,7 @@
   show heading.where(level: 1): it => [
     #set align(right)
     #set text(size: 20pt, font: "Nimbus Sans")
-    #block(below: 3em)[
+    #block(below: 2.5em)[
       *#it.body*
     ]
   ]
@@ -25,7 +25,7 @@
 
   show heading.where(level: 2): it => [
     #set text(size: 14pt, font: "Nimbus Sans")
-    #block(below: 1em, above: 3em)[
+    #block(below: 1em, above: 2.5em)[
       *#it*
     ]
   ]
@@ -66,9 +66,8 @@
 
   // Abstract
   set page(numbering: "i")
-  v(15%)
-  [= Abstract <outside>]
-  v(3em)
+  v(110pt)
+  [= Abstract <outline-ignore-number>]
   abstract
   pagebreak()
 

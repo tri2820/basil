@@ -2,9 +2,9 @@
 
 #show: chapter.with(alphabet_header: true)
 
-= Appendix <outside>
+= Appendix <outline-ignore-number>
 
 #lorem(200)
 
-== #lorem(4)
+== #lorem(4) <outline-ignore-number>
 #lorem(500)

@@ -1,27 +1,28 @@
 #let toc() = {
-  v(15%)
+  v(110pt)
 
   context {
-    let outsides = query(<outside>)
-
+    let outline-ignore-numbers = query(<outline-ignore-number>)
 
     let fill = box(width: 1fr, repeat[.])
     let tab = "\t"
-    show outline.entry: it => {
-      let ignore = it.element in outsides
-      if it.level == 1 {
-        v(10pt)
-      }
+    let last_level = state("last_level", 0)
+    show outline.entry: it => context {
+      last_level.update(_ => it.level)
 
-      set text(size: 14pt) if it.level == 1
+      let ignore = it.element in outline-ignore-numbers
 
-      let page = it.page
-      if it.body.has("children") {
-        let maybe_heading_i = if ignore [#h(0.5em) #tab] else [#it.body.children.at(0)]
-
-        if it.level == 1 [* #maybe_heading_i #h(0.5em) #tab #it.body.children.at(2) #h(1fr) #page*] else [#maybe_heading_i #h(0.5em) #tab #it.body.children.at(2) #fill #page]
-      } else [*#h(1.5em) #it.body #h(1fr) #it.page*]
+      // if it.level == 1 and not ignore { v(50pt) }
+      set text(size: 14pt, weight: "bold") if it.level == 1
+      let heading_i_or_ignored = if ignore [] else [#it.body.children.at(0)]
+      let content = if ignore and not it.body.has("children") [#it.body] else [#it.body.children.at(2)]
+      let filler = if ignore [#h(1fr)] else [#fill]
+      let above = if it.level == 1 and last_level.get() >= 1 [ #v(1em) ]
+      [#above #heading_i_or_ignored #content #filler #it.page]
     }
-    outline(title: "Table of Contents", indent: n => [#h(1.5em) #tab #tab #tab])
+    outline(
+      title: "Table of Contents",
+      indent: n => n * [#h(1.5em)],
+    )
   }
 }

@@ -14,4 +14,6 @@
 
 #lorem(100)
 
+== #lorem(4)
+
 #lorem(50)
