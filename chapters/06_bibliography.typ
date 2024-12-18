@@ -4,6 +4,5 @@
 
 = Bibliography <outline-ignore-number>
 
-Shown @zygos and @wwdc-network
-#bibliography("../bib.yml", title: none)
+#bibliography("../bib.bib", title: none)
 

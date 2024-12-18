@@ -3,7 +3,7 @@
 #show: chapter
 
 = Introduction
-One of the most pervasive challenges faced by organizations is the existence of data silos—disconnected, fragmented pockets of information that reside in isolated platforms or applications. Data silos present significant challenges for knowledge workers, who often find themselves navigating a maze of isolated data sets, each requiring manual coordination between teams.
+One of the most pervasive challenges faced by organizations is the existence of data silos—disconnected, fragmented pockets of information that reside in isolated platforms or applications. Data silos present significant challenges for knowledge workers, who often find themselves navigating a maze of isolated data sets, each requiring manual coordination between teams @Shahrokni2015BeyondIS.
 
 
 #figure(
@@ -18,10 +18,9 @@ To illustrate the impact of data silos, consider a typical scenario within an or
 This has led to many organizations turning to _collaboration platforms_ as a lightweight and user-friendly approach to solving the data silos problem.
 
 == Background
+Collaboration platforms bring together a suite of tools—such as messaging apps, project management tools, wikis, meeting schedulers, and CRMs—into a unified space @Manko. This integration makes it easier for teams to share and access the data they need without navigating multiple systems or encountering fragmentation.
 
-Collaboration platforms bring together a suite of tools—such as messaging apps, project management tools, wikis, meeting schedulers, and CRMs—into a unified space. This integration makes it easier for teams to share and access the data they need without navigating multiple systems or encountering fragmentation.
-
-Many collaboration platforms, in order to cover a wide range of business use cases, invite third-party developers to build and integrate their applications into the platform. However, due to the difficulty of implementing a properly secure sandbox system, these platforms often resort to restricting third-party app functionalities instead. As a result, these apps typically store core logic and data outside the platform, have limited control over the platform's user interface (UI), and require developers to learn niche, platform-specific frameworks.
+Many collaboration platforms, in order to cover a wide range of business use cases, invite third-party developers to build and integrate their applications into the platform. However, due to high security requirements @7975779 and the difficulty of implementing a robust sandbox system, these platforms often resort to restricting third-party app functionalities instead. As a result, these apps typically store core logic and data outside the platform, have limited control over the platform's user interface (UI), and require developers to learn niche, platform-specific frameworks.
 
 Thus, these apps neither extend the platform's functionalities in a meaningful way nor are they easy to develop.
 

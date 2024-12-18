@@ -1,5 +1,5 @@
 = Abstract <outline-ignore-number>
 
-Collaboration Platforms, such as Monday.com and ClickUp, have revolutionized enterprise workflow management, generating billions in revenue by integrating multiple functionalities into a unified platform. However, as organizations integrate more third-party apps, security concerns arise—particularly around data privacy, access control, and system integrity.
+Collaboration platforms, such as Monday.com and ClickUp, have revolutionized enterprise workflow management by integrating diverse functionalities into a single, unified platform. These platforms have generated billions in revenue, but their third-party app integrations are often constrained due to security concerns and the lack of a flexible sandbox model.
 
-We present a sandbox solution with enhanced functionality while maintaining robust security. Our evaluation shows that the sandbox enables granular access control, broadens the technical capabilities of third-party apps and enhances the developer experience.
+In this paper, we present a novel sandbox solution that enhances functionality while maintaining robust security. Our evaluation demonstrates that this sandbox model enables granular access control, expands the technical capabilities of third-party applications, and significantly improves the developer experience.

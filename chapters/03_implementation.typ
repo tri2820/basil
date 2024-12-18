@@ -52,15 +52,15 @@ Under the hood, the sandbox treats each app as a collection of HTML, CSS, and Ja
 )
 
 === For HTML and CSS
-For HTML and CSS, Shadow DOM is used to prevent style leakage from the app to the platform. Shadow DOM is a browser-native feature that allows the creation of an isolated UI environment for each app, as also used by Web Components. Each sandbox has access to a shadow root node that it fully controls. Necessary distortions are implemented to stop querying elements outside the shadow root (e.g., via `shadowRoot.ownerDocument`).
+For HTML and CSS, Shadow DOM @Krause2021 is used to prevent style leakage from the app to the platform. Shadow DOM is a browser-native feature that allows the creation of an isolated UI environment for each app, as also used by Web Components @10_1007_3_540_47961_9_5. Each sandbox has access to a shadow root node that it fully controls. Necessary distortions are implemented to stop querying elements outside the shadow root (e.g., via `shadowRoot.ownerDocument`).
 
 === For JavaScript
 
-For JavaScript, the sandbox uses the Secure ECMAScript (SES) library by EndoJS to lock down global prototypes (preventing prototype pollution attacks) and create a compartment where access to web APIs is disabled by default and can only be enabled via endowments. Unlike iframes or Web Workers, SES does not require a separate thread to run the code. Instead, the code runs in the same main thread as the platform, making it more efficient and avoiding communication overhead while allowing shared object address space.
+For JavaScript, the sandbox uses the Secure ECMAScript (SES) library by EndoJS @endojs to lock down global prototypes (preventing prototype pollution attacks) and create a compartment where access to web APIs is disabled by default and can only be enabled via endowments. Unlike iframes or Web Workers, SES does not require a separate thread to run the code. Instead, the code runs in the same main thread as the platform, making it more efficient and avoiding communication overhead while allowing shared object address space.
 
 === For Resource Access
 
-To enable granting and revoking access to resources, as well as applying distortions, the sandbox uses the Membrane defensive programming pattern. First introduced in the Caja compiler paper, the Membrane pattern is simpler than other capability-based security measures, automatically covers all web APIs via deep annotation, and remains theoretically secure. When implemented in JavaScript, the pattern leverages ES6 proxies: by exposing only the proxy instead of the underlying resource object, the sandbox can distort certain operations on the object through the proxy's handler. Any object returned as a result of these operations is also wrapped in a proxy.
+To enable granting and revoking access to resources, as well as applying distortions, the sandbox uses the Membrane defensive programming pattern @jaradin2005capability. The Membrane pattern is simpler than other capability-based security measures, automatically covers all web APIs via deep annotation, and remains theoretically secure @Gorla_2005. When implemented in JavaScript, the pattern leverages ES6 proxies: by exposing only the proxy instead of the underlying resource object, the sandbox can distort certain operations on the object through the proxy's handler. Any object returned as a result of these operations is also wrapped in a proxy @keil2015transparentobjectproxiesjavascript.
 
 == Developer Experience
 
@@ -70,4 +70,4 @@ We aim to deliver a developer experience that closely resembles a typical web ap
 
 - Dynamic imports and ES modules are supported, as they are the primary mechanism for development servers (e.g., Vite) to load and replace code (e.g., hot module replacement, or HMR). Since JavaScript dynamic imports are part of the JavaScript specification (not a web API), this is implemented by analyzing the source code and replacing the import statement with a function call. This function fetches the file and returns an ES module object.
 
-As a result, the developer experience is virtually identical to that of a normal web app while maintaining the benefits of sandboxing. The developer can use the same tools and frameworks as they would for a normal web app. They can open a localhost development port and let the platform to connect and load the app.
+As a result, the developer experience is virtually identical to that of a normal web app. Developers can utilize familiar tools and frameworks without modification and can seamlessly open a localhost development port, enabling the platform to load the application directly from the local environment.
