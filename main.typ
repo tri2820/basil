@@ -1,7 +1,7 @@
 #import "template.typ": template;
 
 #show: template.with(
-  title: "Sandbox Implementation for Enterprise Superapps: A Scalable and Secure Approach",
+  title: "Sandbox Implementation for Enterprise Collaboration Platforms",
   subtitle: "Scientific Writing Seminar Final Paper",
   department: [Natural Science Faculty of the University of Basel \
     Department of Mathematics and Computer Sciences
@@ -20,10 +20,9 @@
   chapters: (
     "chapters/01_introduction.typ",
     "chapters/02_related_works.typ",
-    "chapters/03_methodology.typ",
-    "chapters/04_implementation.typ",
-    "chapters/05_evaluation.typ",
-    "chapters/06_discussion.typ",
-    "chapters/07_bibliography.typ",
+    "chapters/03_implementation.typ",
+    "chapters/04_evaluation.typ",
+    "chapters/05_discussion.typ",
+    "chapters/06_bibliography.typ",
   ),
 )
