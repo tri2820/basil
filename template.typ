@@ -30,6 +30,13 @@
     ]
   ]
 
+  show heading.where(level: 3): it => [
+    #set text(size: 10pt, font: "Nimbus Sans")
+    #block(below: 1em, above: 2.5em)[
+      *#it*
+    ]
+  ]
+
 
   // Cover
   place(
@@ -76,6 +83,23 @@
 
   set par(justify: true, leading: 0.85em, spacing: 2em)
   set heading(numbering: "1.1")
+
+  show figure: it => [
+    #show par: it => [
+      #set align(left)
+      #it
+    ]
+    #it
+  ]
+
+  show raw.where(block: true): code => {
+    show raw.line: line => {
+      text(fill: gray)[#line.number]
+      h(1em)
+      line.body
+    }
+    code
+  }
 
 
   set page(numbering: none)
